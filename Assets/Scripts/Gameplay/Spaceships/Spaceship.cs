@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Controllers;
 using Gameplay.ShipControllers;
 using Gameplay.ShipSystems;
 using Gameplay.Weapons;
@@ -20,6 +21,9 @@ namespace Gameplay.Spaceships
         [SerializeField]
         private UnitBattleIdentity _battleIdentity;
 
+        [SerializeField]
+        private float _health;
+
 
         public MovementSystem MovementSystem => _movementSystem;
         public WeaponSystem WeaponSystem => _weaponSystem;
@@ -30,11 +34,24 @@ namespace Gameplay.Spaceships
         {
             _shipController.Init(this);
             _weaponSystem.Init(_battleIdentity);
+            if (_battleIdentity == UnitBattleIdentity.Ally)
+            {
+                GameController.Instance.OnChangeHealth(_health);
+            }
         }
 
         public void ApplyDamage(IDamageDealer damageDealer)
         {
-            Destroy(gameObject);
+            _health -= damageDealer.Damage;
+            if(_battleIdentity == UnitBattleIdentity.Ally)
+            {
+                GameController.Instance.OnChangeHealth(_health);
+            }
+            if (_health <= 0)
+            {
+                Destroy(gameObject);
+                GameController.Instance.OnDestroyShip(_battleIdentity);
+            }
         }
 
     }
