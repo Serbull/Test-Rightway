@@ -6,14 +6,14 @@ namespace Gameplay.Helpers
     {
 
         private static Camera _camera;
-        
+
 
         static GameAreaHelper()
         {
-             _camera = Camera.main;
+            _camera = Camera.main;
         }
 
-        
+
         public static bool IsInGameplayArea(Transform objectTransform, Bounds objectBounds)
         {
             if (_camera == null)
@@ -35,6 +35,25 @@ namespace Gameplay.Helpers
                 && (objectPos.y + objectBounds.extents.y > bottomBound);
 
         }
-        
+
+        public static float LeftCornerPosition(Bounds objectBounds)
+        {
+            var camHalfHeight = _camera.orthographicSize;
+            var camHalfWidth = camHalfHeight * _camera.aspect;
+            var camPos = _camera.transform.position;
+            var leftBound = camPos.x - camHalfWidth;
+
+            return leftBound + objectBounds.extents.x;
+        }
+
+        public static float RightCornerPosition(Bounds objectBounds)
+        {
+            var camHalfHeight = _camera.orthographicSize;
+            var camHalfWidth = camHalfHeight * _camera.aspect;
+            var camPos = _camera.transform.position;
+            var rightBound = camPos.x + camHalfWidth;
+
+            return rightBound - objectBounds.extents.x;
+        }
     }
 }
