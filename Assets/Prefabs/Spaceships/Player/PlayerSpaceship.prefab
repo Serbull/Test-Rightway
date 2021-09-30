@@ -135,7 +135,7 @@ MonoBehaviour:
   _movementSystem: {fileID: 6910651213156479314}
   _weaponSystem: {fileID: 6910651213156479312}
   _battleIdentity: 1
-  _health: 500
+  _health: 1000
 --- !u!114 &6910651213156479313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +267,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6910651214060967067}
     m_Modifications:
+    - target: {fileID: 2543782742246006010, guid: 3035d9c60eda3264699729604b649632,
+        type: 3}
+      propertyPath: _cooldown
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2543782742246006012, guid: 3035d9c60eda3264699729604b649632,
         type: 3}
       propertyPath: m_Name
@@ -354,6 +359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6910651214060967067}
     m_Modifications:
+    - target: {fileID: 2543782742246006010, guid: 3035d9c60eda3264699729604b649632,
+        type: 3}
+      propertyPath: _cooldown
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2543782742246006012, guid: 3035d9c60eda3264699729604b649632,
         type: 3}
       propertyPath: m_Name
@@ -441,6 +451,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6910651214060967067}
     m_Modifications:
+    - target: {fileID: 2543782742246006010, guid: dcb1bf35503a2d340ab0e1e9d82bca8b,
+        type: 3}
+      propertyPath: _cooldown
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2543782742246006012, guid: dcb1bf35503a2d340ab0e1e9d82bca8b,
         type: 3}
       propertyPath: m_Name
@@ -528,6 +543,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6910651214060967067}
     m_Modifications:
+    - target: {fileID: 2543782742246006010, guid: dcb1bf35503a2d340ab0e1e9d82bca8b,
+        type: 3}
+      propertyPath: _cooldown
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2543782742246006012, guid: dcb1bf35503a2d340ab0e1e9d82bca8b,
         type: 3}
       propertyPath: m_Name

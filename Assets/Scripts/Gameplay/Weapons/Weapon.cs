@@ -19,8 +19,9 @@ namespace Gameplay.Weapons
 
         private bool _readyToFire = true;
         private UnitBattleIdentity _battleIdentity;
-        
-        
+
+
+        private float energyMultiplier = 1;
         
         public void Init(UnitBattleIdentity battleIdentity)
         {
@@ -42,8 +43,20 @@ namespace Gameplay.Weapons
         private IEnumerator Reload(float cooldown)
         {
             _readyToFire = false;
-            yield return new WaitForSeconds(cooldown);
+            yield return new WaitForSeconds(cooldown / energyMultiplier);
             _readyToFire = true;
+        }
+
+        public void AddEnergy(float time)
+        {
+            StartCoroutine(EnergyMultiplier(time));
+        }
+
+        private IEnumerator EnergyMultiplier(float time)
+        {
+            energyMultiplier = 2;
+            yield return new WaitForSeconds(time);
+            energyMultiplier = 1;
         }
 
     }

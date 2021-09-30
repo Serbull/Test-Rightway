@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game.UI;
+using Gameplay.Spaceships;
 using Gameplay.Weapons;
 using UnityEngine.SceneManagement;
+using Gameplay.Bonuses;
+
 namespace Game.Controllers
 {
     public class GameController : MonoBehaviour
@@ -12,7 +15,8 @@ namespace Game.Controllers
 
         private LevelValues _levelValues;
         public LevelValues LevelValues => _levelValues;
-           
+        
+       
         private void Awake()
         {
             Instance = this;
@@ -24,13 +28,14 @@ namespace Game.Controllers
             UIController.Instance.ChangeHealth(health);
         }
 
-        public void OnDestroyShip(UnitBattleIdentity _battleIdentity)
+        public void OnDestroyShip(Spaceship spaceship)
         {
-            switch(_battleIdentity)
+            switch(spaceship.BattleIdentity)
             {
                 case UnitBattleIdentity.Enemy:
                     _levelValues.score++;
                     UIController.Instance.ChangeScore();
+                    BonusController.Instance.CalculateBonus(spaceship.Position);
                     break;
                 case UnitBattleIdentity.Ally:
                     UIController.Instance.ShowGameOverPanel();

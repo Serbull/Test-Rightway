@@ -30,6 +30,8 @@ namespace Gameplay.Spaceships
 
         public UnitBattleIdentity BattleIdentity => _battleIdentity;
 
+        public Vector3 Position => transform.position;
+
         private void Start()
         {
             _shipController.Init(this);
@@ -50,8 +52,22 @@ namespace Gameplay.Spaceships
             if (_health <= 0)
             {
                 Destroy(gameObject);
-                GameController.Instance.OnDestroyShip(_battleIdentity);
+                GameController.Instance.OnDestroyShip(this);
             }
+        }
+
+        public void AddHealth(float value)
+        {
+            _health += value;
+            if (_battleIdentity == UnitBattleIdentity.Ally)
+            {
+                GameController.Instance.OnChangeHealth(_health);
+            }
+        }
+
+        public void AddEnergy(float time)
+        {
+            _weaponSystem.AddEnergy(time);
         }
 
     }

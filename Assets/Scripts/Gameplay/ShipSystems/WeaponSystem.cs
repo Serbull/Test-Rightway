@@ -24,5 +24,9 @@ namespace Gameplay.ShipSystems
             _weapons.ForEach(w => w.TriggerFire());
         }
 
+        public void AddEnergy(float time)
+        {
+            _weapons.ForEach(w => w.AddEnergy(time));
+        }
     }
 }
