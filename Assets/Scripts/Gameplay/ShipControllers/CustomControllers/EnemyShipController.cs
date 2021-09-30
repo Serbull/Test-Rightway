@@ -9,12 +9,21 @@ public class EnemyShipController : ShipController
 
     [SerializeField]
     private Vector2 _fireDelay;
+    [SerializeField]
+    private float zigzagScale;
 
     private bool _fire = true;
-    
+
+
     protected override void ProcessHandling(MovementSystem movementSystem)
     {
         movementSystem.LongitudinalMovement(Time.deltaTime);
+
+        if (zigzagScale > 0)
+        {
+            float zigzagValue = Mathf.PingPong(Time.time, zigzagScale) * 2 - zigzagScale;
+            movementSystem.LateralMovement(zigzagValue * Time.deltaTime);
+        }
     }
 
     protected override void ProcessFire(WeaponSystem fireSystem)

@@ -43,7 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e165445b5e1b14e8e663bf098668bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 590599124999967857, guid: c2f7d29ccf40de44d81e56cc718f5e0e, type: 3}
+  _objects:
+  - {fileID: 590599124999967857, guid: c2f7d29ccf40de44d81e56cc718f5e0e, type: 3}
+  - {fileID: 590599124999967857, guid: b4a88271b1e9a7b4b9042adab4c729bd, type: 3}
+  - {fileID: 590599124999967857, guid: 6a1d5e76c160d3a4eb17c441a6b0daca, type: 3}
   _parent: {fileID: 0}
   _spawnPeriodRange: {x: 2.5, y: 6}
   _spawnDelayRange: {x: 0, y: 2}

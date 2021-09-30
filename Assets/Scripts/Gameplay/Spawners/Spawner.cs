@@ -9,7 +9,7 @@ namespace Gameplay.Spawners
     {
 
         [SerializeField]
-        private GameObject _object;
+        private GameObject[] _objects;
         
         [SerializeField]
         private Transform _parent;
@@ -48,7 +48,8 @@ namespace Gameplay.Spawners
             
             while (true)
             {
-                Instantiate(_object, transform.position, transform.rotation, _parent);
+                int rdm = Random.Range(0, _objects.Length);
+                Instantiate(_objects[rdm], transform.position, transform.rotation, _parent);
                 yield return new WaitForSeconds(Random.Range(_spawnPeriodRange.x, _spawnPeriodRange.y));
             }
         }
